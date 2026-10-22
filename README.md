@@ -7,9 +7,7 @@
 | 技能 | 目录 | 说明 |
 |---|---|---|
 | `clipping-to-note` | `skills/clipping-to-note` | 把本地网页剪藏提炼成排版好的中文笔记，原件不动，成品另存 |
-| `format-clip` | `skills/clippings-formatter` | 把网页/视频 clip 重构为完整、可读的教程文档 |
 | `goal-to-project` | `skills/goal-to-project-master` | 反向工程拆解职业/学习目标，输出项目式学习规划 `.md` |
-| `task-recap` | `skills/task-recap` | 复盘上一轮任务全过程（含试错），输出结构化总结 |
 
 ## 安装
 
@@ -30,7 +28,7 @@ npx skills add tttnny/my-agent-skills -g
 npx skills add tttnny/my-agent-skills --skill clipping-to-note -a codebuddy -g -y
 
 # 一次装多个
-npx skills add tttnny/my-agent-skills --skill clipping-to-note --skill task-recap -a codebuddy -g -y
+npx skills add tttnny/my-agent-skills --skill clipping-to-note --skill goal-to-project -a codebuddy -g -y
 
 # 全部技能，装到所有已检测到的代理
 npx skills add tttnny/my-agent-skills --skill '*' --agent '*' -g -y
@@ -70,10 +68,9 @@ cp -R my-agent-skills/skills/clipping-to-note ~/.codebuddy/skills/
 npx skills list              # 已安装的技能
 npx skills check             # 检查可更新项
 npx skills update            # 更新
-npx skills remove task-recap # 卸载
+npx skills remove goal-to-project # 卸载
 ```
 
 ## 说明
 
 - 各技能的 `SKILL.md` 里写了触发条件，装好后由代理按对话内容自动调用；标了 `disable-model-invocation: true` 的技能需要手动指定。
-- `clipping-to-note` 与 `format-clip` 功能相近，前者偏「精炼成笔记」，后者偏「还原成教程」，可只装其一。
