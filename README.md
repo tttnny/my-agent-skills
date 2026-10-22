@@ -16,34 +16,10 @@
 在任意目录执行（会交互式选择要安装的技能和目标代理）：
 
 ```bash
-npx skills add tttnny/my-agent-skills -g
+npx skills add tttnny/my-agent-skills
 ```
 
-`-g` 表示装到用户目录（全局可用，如 `~/.codebuddy/skills/`）；去掉 `-g` 则只装到当前项目的 `.codebuddy/skills/`。
-
-### 指定技能与代理（一条命令，无交互）
-
-```bash
-# 只装某一个技能，到 CodeBuddy 全局
-npx skills add tttnny/my-agent-skills --skill clipping-to-note -a codebuddy -g -y
-
-# 一次装多个
-npx skills add tttnny/my-agent-skills --skill clipping-to-note --skill goal-to-project -a codebuddy -g -y
-
-# 全部技能，装到所有已检测到的代理
-npx skills add tttnny/my-agent-skills --skill '*' --agent '*' -g -y
-```
-
-常用参数：
-
-| 参数 | 作用 |
-|---|---|
-| `-g, --global` | 装到 `~/<agent>/skills/`，跨项目可用；缺省为项目级 `./<agent>/skills/` |
-| `-a, --agent <agents...>` | 指定目标代理，如 `codebuddy`、`claude-code`、`codex`、`cursor`；`'*'` 表示全部 |
-| `-s, --skill <skills...>` | 按 SKILL.md 里的 `name` 指定技能；`'*'` 表示仓库内全部 |
-| `-l, --list` | 只列出仓库里有哪些技能，不安装 |
-| `--copy` | 复制文件而非软链接到代理目录 |
-| `-y, --yes` | 跳过确认提示，适合脚本/CI |
+默认装到当前目录下的 `.codebuddy/skills/`（随项目走）；想跨项目可用，在命令末尾加 `-g`，会装到 `~/.codebuddy/skills/`。
 
 ### 先看看有哪些技能
 
@@ -57,7 +33,7 @@ npx skills add tttnny/my-agent-skills --list
 
 ```bash
 git clone https://github.com/tttnny/my-agent-skills.git
-cp -R my-agent-skills/skills/clipping-to-note ~/.codebuddy/skills/
+cp -R my-agent-skills/skills/* ~/.codebuddy/skills/
 ```
 
 目录名可以随意，代理读取的是 `SKILL.md` 里的 `name` 字段。
